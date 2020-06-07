@@ -1,0 +1,17 @@
+<div class="flowchart-container">
+    <ng-container *ngFor="let parent of flowchartParent">
+        <div class="parent" *ngIf="parent.children">
+            <div *ngFor="let child of parent.children" [class]="child.class" (click)="child.class === 'content active' ? selectOrderStatus(child.content) : null">
+                <span>{{ child.content }}</span>
+            </div>
+        </div>
+        <ng-container *ngIf="parent.arrow">
+            <div class="arrow-container">
+                <span class="arrow-label disable">dummy</span>
+                <div [class]="parent.rightArrow"></div>
+                <div [class]="parent.leftArrow"></div>
+                <span class="arrow-label">ステータスキャンセル</span>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>
